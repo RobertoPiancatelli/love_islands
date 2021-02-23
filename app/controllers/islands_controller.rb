@@ -36,10 +36,11 @@ class IslandsController < ApplicationController
   # UPDATE
   def update
   end
-end
+
   # PRIVATE PARAMS
   private
 
   def island_params
-    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests)
+    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :photo)
   end
+end
