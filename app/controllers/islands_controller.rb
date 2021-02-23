@@ -27,14 +27,24 @@ class IslandsController < ApplicationController
 
   # DESTROY
   def destroy
+    @island = Island.find(params[:id])
+    @island.destroy
+    redirect_to islands_path
   end
 
   # EDIT
   def edit
+    @island = Island.find(params[:id])
   end
 
   # UPDATE
   def update
+    @island = Island.find(params[:id])
+    if @island.update(island_params)
+      redirect_to island_path(@island)
+    else
+      render :edit
+    end
   end
 end
   # PRIVATE PARAMS
