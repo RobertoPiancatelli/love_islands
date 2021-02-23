@@ -1,10 +1,12 @@
 class IslandsController < ApplicationController
   # INDEX
   def index
+    @islands = Island.all
   end
 
   # NEW
   def new
+    @island = Island.new
   end
 
   # SHOW
