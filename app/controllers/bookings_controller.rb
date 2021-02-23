@@ -9,7 +9,8 @@ class BookingsController < ApplicationController
     @island = Island.find(params[:island_id])
     @booking = Booking.new(booking_params)
     @booking.island = @island
-    if @booking.save || @booking.user = current_user
+    @booking.user = current_user
+    if @booking.save
       redirect_to island_path(@island)
     else
       render :new
@@ -19,6 +20,6 @@ class BookingsController < ApplicationController
   private
 
   def booking_params
-    params.require(:booking).permit(:check_in, :check_out, :guests, :total_price)
+    params.require(:booking).permit(:check_in, :check_out, :guests)
   end
 end
