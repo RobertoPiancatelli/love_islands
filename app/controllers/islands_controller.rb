@@ -15,6 +15,12 @@ class IslandsController < ApplicationController
 
   # CREATE
   def create
+    @island = Island.new(island_params)
+    if @island.save
+      redirect_to island_path(@island)
+    else
+      render :new
+    end
   end
 
   # DESTROY
@@ -28,5 +34,10 @@ class IslandsController < ApplicationController
   # UPDATE
   def update
   end
-
 end
+  # PRIVATE PARAMS
+  private
+
+  def island_params
+    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :user_id)
+  end
