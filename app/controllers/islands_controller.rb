@@ -11,11 +11,13 @@ class IslandsController < ApplicationController
 
   # SHOW
   def show
+    @island = Island.find(params[:id])
   end
 
   # CREATE
   def create
     @island = Island.new(island_params)
+    @island.user = current_user
     if @island.save
       redirect_to island_path(@island)
     else
@@ -39,5 +41,5 @@ end
   private
 
   def island_params
-    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :user_id)
+    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests)
   end
