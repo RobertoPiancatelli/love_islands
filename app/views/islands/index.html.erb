@@ -1,2 +1,13 @@
-<h1>Hey</h1>
+<h1>Index</h1>
 
+<h1>Island list!</h1>
+<ul>
+  <% @islands.each do |island| %>
+    <li><strong>Name: <%= link_to island.name, island_path(island) %> </strong></li>
+    <li><%= island.image_url %> </li>
+    <li>Location: <%= island.location %> </li>
+    <li>Description<%= island.description %> </li>
+    <li>Max Guests:<%= island.max_guests %> </li>
+    <li>Price per night:<%= island.price_per_night %> </li>
+  <% end %>
+</ol>
