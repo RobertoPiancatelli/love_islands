@@ -1,0 +1,10 @@
+<%= simple_form_for [@island, @booking] do |f| %>
+  <%= f.input :check_in %>
+  <%= f.input :check_out %>
+  <%= f.input :guests %>
+  <%= f.input :total_price %>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to "Back", island_path(@island)%>
+
