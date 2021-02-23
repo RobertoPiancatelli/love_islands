@@ -1,13 +1,50 @@
-<h1>Index</h1>
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-12">
+      <h1>All our Islands</h1>
+    </div>
+  </div>
 
-<h1>Island list!</h1>
-<ul>
-  <% @islands.each do |island| %>
-    <li><strong>Name: <%= link_to island.name, island_path(island) %> </strong></li>
-    <li><img border="0" alt="W3Schools" src="<%= island.image_url %>" width="100" height="100"></li>
-    <li>Location: <%= island.location %> </li>
-    <li>Description<%= island.description %> </li>
-    <li>Max Guests:<%= island.max_guests %> </li>
-    <li>Price per night:<%= island.price_per_night %> </li>
-  <% end %>
-</ol>
+  <div class="row">
+    <div class="col">
+      <% if @query %>
+        <p>You searched for <strong><%= @query %></strong>. We found <%= @islands.count %> islands out of our <%= Island.count %> on our website.</p>
+      <% else %>
+        <p>All <%= Island.count %> islands.</p>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <% @islands.each do |island| %>
+      <div class="col-4">
+        <div class="island-card">
+          <div class="island-card-image" style="background-image: url(<%= 'https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg' %>)"></div>
+          <div class="island-card-content">
+            <div class="island-card-title">
+              <h4><%= island.name %></h4>
+            </div>
+            <p><%= island.location %></p>
+            <div class="flex">
+              <div class="flex">
+                <i class="material-icons mr-2">people</i><span><%= island.max_guests %></span>
+              </div>
+              <div class="flex ml-3">
+                <i class="material-icons mr-2">euro_symbol</i> <%= island.price_per_night %>
+              </div>
+            </div>
+          </div>
+          <div class="island-card-actions">
+            <%= link_to 'More info', island_path(island) %>
+            <%= link_to 'Edit', edit_island_path(island), class: 'ml-3 text-warning' %>
+            <%= link_to "Remove", island_path(island),
+                method: :delete, 
+                data: { confirm: "Are you sure?" },
+                class: 'ml-3 text-danger'
+            %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
