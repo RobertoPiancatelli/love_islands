@@ -1,16 +1,24 @@
 class BookingsController < ApplicationController
 
-  before_action :find_booking, only: [:show]
-
-  def index
-    @bookings = Booking.all
+  def new
+    @island = Island.find(params[:island_id])
+    @booking = Booking.new
   end
 
-  def show; end
+  def create
+    @island = Island.find(params[:island_id])
+    @booking = Booking.new(booking_params)
+    @booking.island = @island
+    if @booking.save || @booking.user = current_user
+      redirect_to island_path(@island)
+    else
+      render :new
+    end
+  end
 
   private
 
-  def find_booking
-    @booking = Booking.find(params[:id])
+  def booking_params
+    params.require(:booking).permit(:check_in, :check_out, :guests, :total_price)
   end
 end
