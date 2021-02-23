@@ -1,0 +1,17 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+<%= simple_form_for (@island) do |f| %>
+<%= f.input :name %>
+<%= f.input :location %>
+<%= f.input :description %>
+<%= f.input :max_guests %>
+<%= f.input :price_per_night %>
+<%= f.submit 'Update your Love Island!', class: 'btn btn-primary' %>
+
+<% end %>
+
+    </div>
+  </div>
+</div>
