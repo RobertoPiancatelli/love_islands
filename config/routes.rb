@@ -5,6 +5,6 @@ Rails.application.routes.draw do
 
   resources :islands do
     resources :bookings
+     resources :reviews, only: [:new]
   end
-
 end
