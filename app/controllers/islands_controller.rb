@@ -1,6 +1,7 @@
 class IslandsController < ApplicationController
   # INDEX
   def index
+    @islands = Island.all
   end
 
   # NEW
