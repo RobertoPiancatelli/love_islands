@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_22_171858) do
+ActiveRecord::Schema.define(version: 2021_02_23_113958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,7 +23,21 @@ ActiveRecord::Schema.define(version: 2021_02_22_171858) do
     t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "island_id", null: false
+    t.index ["island_id"], name: "index_bookings_on_island_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "islands", force: :cascade do |t|
+    t.string "name"
+    t.string "location"
+    t.integer "price_per_night"
+    t.string "description"
+    t.integer "max_guests"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["user_id"], name: "index_islands_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -34,9 +48,14 @@ ActiveRecord::Schema.define(version: 2021_02_22_171858) do
     t.datetime "remember_created_at"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.boolean "is_host?", default: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "bookings", "islands"
   add_foreign_key "bookings", "users"
+  add_foreign_key "islands", "users"
 end
