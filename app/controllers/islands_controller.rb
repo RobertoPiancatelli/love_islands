@@ -51,5 +51,5 @@ end
   private
 
   def island_params
-    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests)
+    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :image_url)
   end
