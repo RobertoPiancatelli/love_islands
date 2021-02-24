@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+<%= simple_form_for (@island) do |f| %>
+<%= f.input :name %>
+<%= f.input :location %>
+<%= f.input :description %>
+<%= f.input :max_guests %>
+<%= f.input :price_per_night %>
+<!-- Using single line instead of importing _img_form. -->
+<%= f.input :photo, as: :file %>
+
+<%= f.submit 'Add your Island', class: 'btn btn-primary' %>
+<% end %>
+
+    </div>
+  </div>
+</div>
+
