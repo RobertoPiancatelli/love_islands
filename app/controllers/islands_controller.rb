@@ -39,6 +39,7 @@ class IslandsController < ApplicationController
 
   # UPDATE
   def update
+
     @island = Island.find(params[:id])
     if @island.update(island_params)
       redirect_to island_path(@island)
@@ -51,6 +52,6 @@ class IslandsController < ApplicationController
   private
 
   def island_params
-    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :image_url)
+    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :photo)
   end
 end
