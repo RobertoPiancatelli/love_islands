@@ -1,20 +1,12 @@
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
-  <div class="container">
-    <h1>Find your <strong>perfect</strong> paradise destination!</h1>
-    <p>Sort from hundreds of islands around the world.</p>
-  </div>
-</div>
-
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8">
-
 
 <%= simple_form_for [@island, @booking] do |f| %>
   <%= f.input :check_in, as: :date, html5: true %>
   <%= f.input :check_out, as: :date, html5: true %>
   <%= f.input :guests %>
-  <%= f.submit %>
+  <div class="submit-button"><%= f.submit %></div>
 <% end %>
 <br>
 <%= link_to "Back", island_path(@island)%>
