@@ -7,15 +7,37 @@
 
 <div class="container">
   <div class="row justify-content-center">
-    <div class="col-md-8">
+    <div class="col-md-10">
 
 
 <%= simple_form_for [@island, @booking] do |f| %>
   <%= f.input :check_in, as: :date, html5: true %>
   <%= f.input :check_out, as: :date, html5: true %>
   <%= f.input :guests %>
+  <!-- Fake payment method -->
+    <hr>
+    <h2>Total price: </h2>
+    <hr>
+    <h2>Payment</h2>
+    <br>
+      <form accept-charset="UTF-8" >
+        <label for="type">Payment type:</label>
+        <input name="type" type="text" />
+        <label for="card">Card Number:</label>
+        <input name="card" type="text" />
+        <label for="exp">Expire Date:</label>
+        <input name="exp" type="text" />
+        <label for="cvv">CVV:</label>
+        <input name="cvv" type="text" />
+      </form>
+    <hr>
+    <!-- Fake payment method -->
   <%= f.submit %>
+  
+  
+  
 <% end %>
+<br>
 <br>
 <%= link_to "Back", island_path(@island)%>
 

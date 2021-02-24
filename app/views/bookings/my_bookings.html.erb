@@ -6,12 +6,13 @@
       <h1>My Bookings</h1>
         <% @bookings.each do |booking|%>
           <li><h3><%= booking.island.name%></h3></li>
-          <li><%= booking.check_in%></li>
-          <li><%= booking.check_out%></li>
-          <li><p>Number of nights: <%= (booking.check_out - booking.check_in).to_i%></li></p>
-          <li><%= booking.guests%></li>
-          <li><%= booking.island_id%></li>
-          <li><%= booking.total_price%></li>
+          <li><p>Check-in: <%= booking.check_in%></p></li>
+          <li><p>Check-out <%= booking.check_out%></p></li>
+          <% number_of_nights = (booking.check_out - booking.check_in).to_i%>
+          <li><p>Number of nights: <%= number_of_nights %></p></li>
+          <li><p>Number of guests: <%= booking.guests%></p></li>
+          <% total_price = number_of_nights * booking.total_price %>
+          <li><p>Total price: <%= total_price%></p></li>
           <hr>
 <% end %>
 
