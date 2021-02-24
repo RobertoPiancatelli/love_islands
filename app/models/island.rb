@@ -9,5 +9,6 @@ class Island < ApplicationRecord
   validates :price_per_night, presence: true
   validates :description, presence: true
   validates :max_guests, presence: true
+  validates :photo, presence: true
 
 end
