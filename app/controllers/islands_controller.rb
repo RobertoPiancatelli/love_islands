@@ -39,6 +39,7 @@ class IslandsController < ApplicationController
 
   # UPDATE
   def update
+
     @island = Island.find(params[:id])
     if @island.update(island_params)
       redirect_to island_path(@island)
