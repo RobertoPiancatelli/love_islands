@@ -1,3 +1,8 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+
+
 <%= simple_form_for [@island, @booking] do |f| %>
   <%= f.input :check_in, as: :date, html5: true %>
   <%= f.input :check_out, as: :date, html5: true %>
@@ -6,4 +11,9 @@
 <% end %>
 <br>
 <%= link_to "Back", island_path(@island)%>
+
+  </div>
+  </div>
+</div>
+
 
