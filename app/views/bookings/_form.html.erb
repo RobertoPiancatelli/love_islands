@@ -14,29 +14,26 @@
   <%= f.input :check_in, as: :date, html5: true %>
   <%= f.input :check_out, as: :date, html5: true %>
   <%= f.input :guests %>
-  <!-- Fake payment method -->
+  <%= f.submit %>
+<% end %>
+<!-- Fake payment method -->
     <hr>
-    <h2>Total price: </h2>
+    <h2>Total price: £2400 </h2>
     <hr>
     <h2>Payment</h2>
     <br>
       <form accept-charset="UTF-8" >
         <label for="type">Payment type:</label>
-        <input name="type" type="text" />
+        <input name="type" type="text" placeholder="Visa" />
         <label for="card">Card Number:</label>
-        <input name="card" type="text" />
+        <input name="card" type="text" placeholder="4534 4234 5604 2345"/>
         <label for="exp">Expire Date:</label>
-        <input name="exp" type="text" />
+        <input name="exp" type="text" placeholder="3/22"/>
         <label for="cvv">CVV:</label>
-        <input name="cvv" type="text" />
+        <input name="cvv" type="text" placeholder="***"/>
       </form>
     <hr>
     <!-- Fake payment method -->
-  <%= f.submit %>
-  
-  
-  
-<% end %>
 <br>
 <br>
 <%= link_to "Back", island_path(@island)%>
