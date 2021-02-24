@@ -3,4 +3,7 @@
 <p>Check-in date: <%= @booking.check_in %></p>
 <p>Check-out date: <%= @booking.check_out %></p>
 <div id="book-button"><%= link_to 'Leave Review', new_booking_review_path(@booking) %></div>
+</br>
+<%= link_to 'Back to Island', island_path(@booking.island) %>
 </div>
+
