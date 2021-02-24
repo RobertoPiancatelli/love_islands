@@ -1,12 +1,17 @@
 class ReviewsController < ApplicationController
 
+  def new
+    @booking = Booking.find(params[:booking_id])
+    @review = Review.new
+  end
+
   def create
-    @island = Island.find(params[:id])
+    @booking = Booking.find(params[:booking_id])
     @review = Review.new(review_params)
-    @review.island = @island
-    @island.user = current_user
+    @review.booking = @booking
+    # @review.user = current_user
     if @review.save
-      redirect_to island_path(@island)
+      redirect_to booking_path(@booking)
     else
       render :new
     end
