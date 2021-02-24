@@ -1,0 +1,9 @@
+<%= simple_form_for [@island, @booking] do |f| %>
+  <%= f.input :check_in, as: :date, html5: true %>
+  <%= f.input :check_out, as: :date, html5: true %>
+  <%= f.input :guests %>
+  <%= f.submit %>
+<% end %>
+<br>
+<%= link_to "Back", island_path(@island)%>
+
