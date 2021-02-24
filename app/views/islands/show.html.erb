@@ -1,31 +1,56 @@
-  <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
+  <% if @island.photo.attached? %>
+        <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @island.photo.key %>');">
   <div class="container">
-    <h1>Find your <strong>perfect</strong> paradise destination!</h1>
-    <p>Sort from hundreds of islands around the world.</p>
+    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
   </div>
 </div>
-
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-md-8">
-
-      <% if @island.photo.attached? %>
-        <div class="card-category" style="height:300px; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @island.photo.key %>')">
-          <h1><%= @island.name %>  🌴</h1>
-        </div>
       <% else %>
-        <h1><%= @island.name %>  🌴🌴</h1>
-      <% end %>
-
-<%= link_to 'edit', edit_island_path(@island) %>
-<%= link_to 'Delete island', island_path(@island), method: 'delete' %>
-<%= link_to "Book!", new_island_booking_path(@island) %>
-
-    </div>
+        <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://img.theculturetrip.com/wp-content/uploads/2018/04/shutterstock_1050077834.jpg');">
+  <div class="container">
+    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
   </div>
+</div> 
+<% end %>
+
+<div class ="container" style="margin: 0 auto">
+
+<h1><%= @island.name %></h1>
+
+<p><%= @island.description %></p>
+
+<p>Price per night: £<%= @island.price_per_night %></p>
+
+<h4>Features of the island</h4>
+
+<div class ="container show-features">
+          <div class="show-card-content">
+            <div class="container">
+                <i class="material-icons mr-2">people</i><span><%= @island.max_guests %></span>
+            </div>
+          </div>
+      
+          <div class="show-card-content">
+            <div class="container">
+                <i class="material-icons mr-2">bed</i><span>5</span>
+            </div>
+          </div>
+
+           <div class="show-card-content">
+            <div class="container">
+                <i class="material-icons mr-2">pool</i><span>2</span>
+            </div>
+          </div>
+        </div>
+     
+
+<div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
+</br>
+<%= link_to 'Edit', edit_island_path(@island) %>
+</br>
+<%= link_to 'Delete island', island_path(@island), method: 'delete' %>
 </div>
 
-<div class="container">
+<div class="container review">
 <h3>Reviews</h3>
 
     <ul class="list-group">
