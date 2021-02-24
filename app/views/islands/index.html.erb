@@ -19,7 +19,11 @@
     <% @islands.each do |island| %>
       <div class="col-4">
         <div class="island-card">
-          <div class="island-card-image" style="background-image: url(<%= 'https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg' %>)"></div>
+          <% if island.photo.attached? %>
+            <div class="island-card-image" style="background-image: url('<%= cl_image_path island.photo.key %>')"></div>
+          <% else %>
+             <div class="island-card-image" style="background-image: url(<%= 'https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg' %>)"></div>
+          <% end %>
           <div class="island-card-content">
             <div class="island-card-title">
               <h4><%= island.name %></h4>
@@ -38,7 +42,7 @@
             <%= link_to 'More info', island_path(island) %>
             <%= link_to 'Edit', edit_island_path(island), class: 'ml-3 text-warning' %>
             <%= link_to "Remove", island_path(island),
-                method: :delete, 
+                method: :delete,
                 data: { confirm: "Are you sure?" },
                 class: 'ml-3 text-danger'
             %>
