@@ -8,6 +8,7 @@
           <li><h3><%= booking.island.name%></h3></li>
           <li><%= booking.check_in%></li>
           <li><%= booking.check_out%></li>
+          <li><p>Number of nights: <%= (booking.check_out - booking.check_in).to_i%></li></p>
           <li><%= booking.guests%></li>
           <li><%= booking.island_id%></li>
           <li><%= booking.total_price%></li>
