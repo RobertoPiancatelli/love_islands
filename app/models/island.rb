@@ -6,7 +6,7 @@ class Island < ApplicationRecord
   pg_search_scope :search,
     against: [ :name, :location ],
     using: {
-      tsearch: { prefix: true } 
+      tsearch: { prefix: true }
     }
 
   # REFERENCES
@@ -15,7 +15,7 @@ class Island < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   # VALIDATIONS
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true , uniqueness: true
   validates :location, presence: true
   validates :price_per_night, presence: true
   validates :description, presence: true
