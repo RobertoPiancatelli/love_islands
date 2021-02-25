@@ -13,7 +13,7 @@
 <%= f.input :location %>
 <%= f.input :description %>
 <%= f.input :max_guests %>
-<%= f.input :price_per_night %>
+<%= f.input :price_cents, label:"Price per night" %>
 <!-- Using single line instead of importing _img_form. -->
 <%= f.input :photo, as: :file %>
 <%= f.submit 'Add your Island', class: 'btn btn-primary' %>
