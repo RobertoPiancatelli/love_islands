@@ -1,7 +1,20 @@
 class IslandsController < ApplicationController
   # INDEX
+
+  include PgSearch::Model
+  pg_search_scope :search_by_name_and_location,
+    against: [ :name, :location ],
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
+
   def index
+    if params[:query].present?
+      @results = PgSearch.multisearch(params[:query])
+    # @islands = Island.where(location: params[:query])
+    else
     @islands = Island.all
+    end
   end
 
   # NEW

@@ -7,6 +7,25 @@
     </div>
   </div>
 
+<%= form_tag islands_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an island"
+  %>
+  <%= submit_tag "Search", class: "btn btn-primary" %>
+<% end %>
+
+<div id="movies">
+<% if @results %>
+<% @results.each do |result| %>
+  <h4><%= result.searchable.name %></h4>
+  <p><%= result.searchable.location %></h4>
+<% end %>
+<% else %>
+<p>Hey hey</p>
+<% end %>
+
   <div class="row">
     <div class="col">
       <% if @query %>
