@@ -10,11 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 2021_02_25_112334) do
-=======
-ActiveRecord::Schema.define(version: 2021_02_24_141415) do
->>>>>>> 72f89d4cdd5dd4c78fecde911f272643049006e2
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,12 +58,9 @@ ActiveRecord::Schema.define(version: 2021_02_24_141415) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "image_url"
-<<<<<<< HEAD
     t.integer "price_cents", default: 0, null: false
-=======
     t.float "latitude"
     t.float "longitude"
->>>>>>> 72f89d4cdd5dd4c78fecde911f272643049006e2
     t.index ["user_id"], name: "index_islands_on_user_id"
   end
 
