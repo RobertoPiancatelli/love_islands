@@ -9,7 +9,7 @@
   <div class="container">
     <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
   </div>
-</div> 
+</div>
 <% end %>
 
 <div class ="container" style="margin: 0 auto">
@@ -28,7 +28,7 @@
                 <i class="material-icons mr-2">people</i><span><%= @island.max_guests %></span>
             </div>
           </div>
-      
+
           <div class="show-card-content">
             <div class="container">
                 <i class="material-icons mr-2">bed</i><span>5</span>
@@ -41,7 +41,7 @@
             </div>
           </div>
         </div>
-     
+
 
 <div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
 </br>
@@ -55,7 +55,7 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-  
+
 
 <div class="container review">
 <h3>Reviews</h3>
