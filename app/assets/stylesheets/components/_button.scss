@@ -16,3 +16,24 @@
   background-color: #ff414d;
   border-color: #ff414d;
 }
+
+#edit-button a {
+  border: solid 1px green;
+  border-radius: 10px;
+  color: white;
+  background-color: green;
+  padding: 10px;
+  margin-right: 10px;
+}
+
+#delete-button a {
+  border: solid 1px #ec4646;
+  border-radius: 10px;
+  color: white;
+  background-color: #ec4646;
+  padding: 10px;
+}
+
+.container-buttons {
+  display: flex;
+}

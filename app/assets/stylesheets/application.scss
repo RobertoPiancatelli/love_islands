@@ -12,4 +12,14 @@
 @import "components/index";
 @import "pages/index";
 
+body {
+  background-color: white;
+}
 
+.show-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+  margin: 0 auto;
+  width: 800px;
+}

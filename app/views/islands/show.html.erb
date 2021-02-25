@@ -1,20 +1,44 @@
   <% if @island.photo.attached? %>
         <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @island.photo.key %>');">
   <div class="container">
-    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
+    <h1>Welcome to <%= @island.location %></h1>
   </div>
 </div>
       <% else %>
         <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://img.theculturetrip.com/wp-content/uploads/2018/04/shutterstock_1050077834.jpg');">
   <div class="container">
-    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
+    <h1>Welcome to <%= @island.location %></h1>
   </div>
 </div>
 <% end %>
 
-<div class ="container" style="margin: 0 auto">
+<div class ="container">
 
+<div class ="container show-header">
+
+<div class ="container">
 <h1><%= @island.name %></h1>
+</div>
+<div class="container">
+ <% if current_user == @island.user %>
+  <div class="container-buttons">
+    <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
+    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete' %></span>
+    </div>
+    <% else %>
+    <div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
+  <% end %>
+  </div>
+</div>
+
+
+<p>Island hosted by XXXX</p>
+
+<p>Average Rating XXXX</p>
+
+<p style="color:lightgray">_______________________________________________________________</p>
+</br></br>
+<h2>What to expect from your stay?</h2>
 
 <p><%= @island.description %></p>
 
@@ -41,18 +65,8 @@
             </div>
           </div>
         </div>
-
-
-<div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
 </br>
-  <% if current_user == @island.user %>
-    <%= link_to 'Edit', edit_island_path(@island) %>
-    </br>
-    <%= link_to 'Delete island', island_path(@island), method: 'delete' %>
-    <% else %>
-    <h4>hello</h4>
-  <% end %>
-</div>
+ 
 
 <div class="container">
     <div id="map"
