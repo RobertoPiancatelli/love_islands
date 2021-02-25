@@ -1,4 +1,6 @@
 class IslandsController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i[index show]
+
   # INDEX
   def index
     if params[:query].present?
@@ -17,6 +19,7 @@ class IslandsController < ApplicationController
   # SHOW
   def show
     @island = Island.find(params[:id])
+    @markers = [{ lat: @island.latitude, lng: @island.longitude }]
   end
 
   # CREATE
@@ -44,7 +47,6 @@ class IslandsController < ApplicationController
 
   # UPDATE
   def update
-
     @island = Island.find(params[:id])
     if @island.update(island_params)
       redirect_to island_path(@island)
