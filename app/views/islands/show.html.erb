@@ -50,22 +50,29 @@
 <%= link_to 'Delete island', island_path(@island), method: 'delete' %>
 </div>
 
+<div class="container">
+    <div id="map"
+      data-markers="<%= @markers.to_json %>"
+      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
+  
+
 <div class="container review">
 <h3>Reviews</h3>
+   <ul class="list-group">
+    <% @island.reviews.each do |review| %>
+      <li class="list-group-item d-flex justify-content-between align-items-center">
+        <span class="badge badge-primary badge-pill">
+          <% counter = 0 %>
+          <% 5.times do %>
+            <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
+            <% counter += 1 %>
+          <% end %>
+        </span>
+        <%= review.content %>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
 
-    <ul class="list-group">
-      <% @island.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-              <% counter += 1 %>
-            <% end %>
-          </span>
-          <%= review.content %>
-        </li>
-        <hr>
-      <% end %>
-    </ul>
 </div>
