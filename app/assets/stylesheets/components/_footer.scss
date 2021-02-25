@@ -1,5 +1,4 @@
 .footer {
-  background: #f4f4f4;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -23,4 +22,10 @@
 }
 .footer .fa-heart {
   color: #d23333;
+}
+
+.page-container {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
 }
