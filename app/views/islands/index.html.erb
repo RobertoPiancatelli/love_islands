@@ -1,16 +1,15 @@
 <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
   <div class="container">
-    <h1><%="#{current_user.first_name}" %>, find your <strong>perfect</strong> paradise destination!</h1>
+    <h1>Find your <strong>perfect</strong> paradise destination!</h1>
     <p>Sort from hundreds of islands around the world.</p>
     </br>
-    <div class="search-form">
-    <%= form_tag islands_path, method: :get do %>
+    <div id="form-field"><%= form_tag islands_path, method: :get do %>
   <%= text_field_tag :query,
     params[:query],
-    class: "form-control",
-    placeholder: "Find an island"
+    id: "form-field",
+    placeholder: " 🔍 Find an island"
   %>
-  <div id="submit-button"><%= submit_tag "Search", class: "btn btn-primary" %></div>
+  <%= submit_tag "Search", id: "submit-button" %>
 <% end %>
 </div>
 
