@@ -10,8 +10,11 @@
 
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
+      <li class="nav-item">
+          <%= link_to "Home", islands_path, class: "nav-link" %>
+      </li>
       <% if user_signed_in? %>
-    
+
         <li class="nav-item">
           <%= link_to "Host an Island", new_island_path, class: "nav-link" %>
         </li>
