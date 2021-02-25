@@ -26,7 +26,7 @@ arr.each do |user|
     island = Island.create(
       name: Faker::Ancient.titan,
       location: Faker::Nation.nationality,
-      price_cents: 100,
+      price_cents: rand(300..500),
       description: Faker::Lorem.sentences(number: 4),
       max_guests: 4,
       user: user,
