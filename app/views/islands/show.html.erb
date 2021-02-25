@@ -1,24 +1,48 @@
   <% if @island.photo.attached? %>
         <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @island.photo.key %>');">
   <div class="container">
-    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
+    <h1>Welcome to <%= @island.location %></h1>
   </div>
 </div>
       <% else %>
         <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://img.theculturetrip.com/wp-content/uploads/2018/04/shutterstock_1050077834.jpg');">
   <div class="container">
-    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
+    <h1>Welcome to <%= @island.location %></h1>
   </div>
 </div>
 <% end %>
 
-<div class ="container" style="margin: 0 auto">
+<div class ="container">
 
-<h1><%= @island.name %></h1>
+<div class ="show-header">
 
-<p><%= @island.description %></p>
+<h1 class="m-0"><%= @island.name %></h1>
+
+ <% if current_user == @island.user %>
+  <div class="container-buttons">
+    <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
+    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete' %></span>
+    </div>
+    <% else %>
+    <%= link_to "Book Now", new_island_booking_path(@island), id: "book-button" %>
+  <% end %>
+  </div>
+
+</br>
+
+<p>Island hosted by XXXX</p>
+
+<p>Average Rating XXXX</p>
 
 <p>Price per night: £<%= @island.price_per_night %></p>
+
+<p style="color:lightgray">_______________________________________________________________</p>
+</br>
+<h2>What to expect from your stay?</h2>
+</br>
+<p><%= @island.description %></p>
+
+<p style="color:lightgray">_______________________________________________________________</p>
 
 <h4>Features of the island</h4>
 
@@ -41,27 +65,18 @@
             </div>
           </div>
         </div>
-
-
-<div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
 </br>
-  <% if current_user == @island.user %>
-    <%= link_to 'Edit', edit_island_path(@island) %>
-    </br>
-    <%= link_to 'Delete island', island_path(@island), method: 'delete' %>
-    <% else %>
-    <h4>hello</h4>
-  <% end %>
-</div>
+ 
 
 <div class="container">
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+</div>
 
 
-<div class="container review">
+<div class="container" id="reviews">
 <h3>Reviews</h3>
    <ul class="list-group">
     <% @island.reviews.each do |review| %>
