@@ -1,5 +1,5 @@
 class Island < ApplicationRecord
-  # REFERENCES
+  # Associations
   has_one_attached :photo
   belongs_to :user
   has_many :bookings
@@ -11,4 +11,6 @@ class Island < ApplicationRecord
   validates :description, presence: true
   validates :max_guests, presence: true
   validates :photo, presence: true
+  # Stripe
+  monetize :price_cents
 end

@@ -25,7 +25,7 @@ class BookingsController < ApplicationController
 
   def my_bookings
     @bookings = current_user.bookings
-    # @island = Island.find(params[:id])
+    
   end
 
   private
