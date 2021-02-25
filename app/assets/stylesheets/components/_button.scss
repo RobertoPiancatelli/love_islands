@@ -1,9 +1,11 @@
-#book-button a {
+#book-button {
   border: solid 1px #ec4646;
   border-radius: 10px;
   color: white;
   background-color: #ec4646;
   padding: 10px;
+  height: fit-content;
+  width: 200px;
 }
 
 .btn {

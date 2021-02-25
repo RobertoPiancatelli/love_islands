@@ -16,20 +16,17 @@
 
 <div class ="container show-header">
 
-<div class ="container">
-<h1><%= @island.name %></h1>
-</div>
-<div class="container">
+<h1 class="m-0"><%= @island.name %></h1>
+
  <% if current_user == @island.user %>
   <div class="container-buttons">
     <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
     <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete' %></span>
     </div>
     <% else %>
-    <div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
+    <%= link_to "Book Now", new_island_booking_path(@island), id: "book-button" %>
   <% end %>
   </div>
-</div>
 
 
 <p>Island hosted by XXXX</p>
