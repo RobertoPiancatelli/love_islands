@@ -1,25 +1,9 @@
-<h1> <%= @booking.island.name %></h1>
-<h2><%= @booking.check_in %> - <%= @booking.check_out %></h2>
-<%= link_to 'Leave a review', new_booking_review_path(@booking) %>
-<% @booking.reviews.each do |review|  %>
-<p><%= review.content %> - <%= review.rating %></p>
-<% end %>
+<div class="container">
+<h1>Congratulations you have booked <%= @booking.island.name %></h1>
+<p>Check-in date: <%= @booking.check_in %></p>
+<p>Check-out date: <%= @booking.check_out %></p>
+<div id="book-button"><%= link_to 'Leave Review', new_booking_review_path(@booking) %></div>
+</br>
+<%= link_to 'Back to Island', island_path(@booking.island) %>
+</div>
 
-
-<h3>Reviews</h3>
-
-    <ul class="list-group">
-      <% @booking.reviews.each do |review| %>
-        <li class="list-group-item d-flex justify-content-between align-items-center">
-          <span class="badge badge-primary badge-pill">
-            <% counter = 0 %>
-            <% 5.times do %>
-              <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
-              <% counter += 1 %>
-            <% end %>
-          </span>
-          <%= review.content %>
-        </li>
-        <hr>
-      <% end %>
-    </ul>

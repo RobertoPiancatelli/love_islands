@@ -3,8 +3,19 @@
 <div class="container mt-3">
   <div class="row">
     <div class="col-12">
-      <h1>All our Islands</h1>
+      <h1>All available islands</h1>
     </div>
+  </div>
+
+  <div class="search_bar">
+    <%= form_tag islands_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an island or location..."
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary mt-3 mb-3" %>
+    <% end %>
   </div>
 
   <div class="row">
@@ -12,7 +23,7 @@
       <% if @query %>
         <p>You searched for <strong><%= @query %></strong>. We found <%= @islands.count %> islands out of our <%= Island.count %> on our website.</p>
       <% else %>
-        <p>All <%= Island.count %> islands.</p>
+        <p>Displaying all <%= Island.count %> islands.</p>
       <% end %>
     </div>
   </div>
@@ -36,18 +47,13 @@
                 <i class="material-icons mr-2">people</i><span><%= island.max_guests %></span>
               </div>
               <div class="flex ml-3">
-                <i class="material-icons mr-2">euro_symbol</i> <%= island.price_per_night %>
+                £<%= island.price_per_night %> per night
               </div>
             </div>
           </div>
-          <div class="island-card-actions">
-            <%= link_to 'More info', island_path(island) %>
-            <%= link_to 'Edit', edit_island_path(island), class: 'ml-3 text-warning' %>
-            <%= link_to "Remove", island_path(island),
-                method: :delete,
-                data: { confirm: "Are you sure?" },
-                class: 'ml-3 text-danger'
-            %>
+          
+          <div class="island-card-button">
+            <%= link_to 'Find out more', island_path(island) %>
           </div>
         </div>
       </div>
