@@ -1,4 +1,14 @@
 class Island < ApplicationRecord
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
+
+   include PgSearch::Model
+  pg_search_scope :search,
+    against: [ :name, :location ],
+    using: {
+      tsearch: { prefix: true } 
+    }
+
   # REFERENCES
   has_one_attached :photo
   belongs_to :user

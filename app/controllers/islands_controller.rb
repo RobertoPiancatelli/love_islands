@@ -1,17 +1,12 @@
 class IslandsController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
+
   # INDEX
 
-  include PgSearch::Model
-  pg_search_scope :search_by_name_and_location,
-    against: [ :name, :location ],
-    using: {
-      tsearch: { prefix: true } # <-- now `superman batm` will return something!
-    }
-
   def index
+    @query = params[:query]
     if params[:query].present?
-      @results = PgSearch.multisearch(params[:query])
-    # @islands = Island.where(location: params[:query])
+      @islands = Island.search(params[:query])
     else
     @islands = Island.all
     end
@@ -25,6 +20,7 @@ class IslandsController < ApplicationController
   # SHOW
   def show
     @island = Island.find(params[:id])
+    @markers = [{ lat: @island.latitude, lng: @island.longitude }]
   end
 
   # CREATE
@@ -52,7 +48,6 @@ class IslandsController < ApplicationController
 
   # UPDATE
   def update
-
     @island = Island.find(params[:id])
     if @island.update(island_params)
       redirect_to island_path(@island)
