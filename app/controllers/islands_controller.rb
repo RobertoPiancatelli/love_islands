@@ -1,5 +1,5 @@
 class IslandsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   # INDEX
 
@@ -20,7 +20,14 @@ class IslandsController < ApplicationController
   # SHOW
   def show
     @island = Island.find(params[:id])
-    @markers = [{ lat: @island.latitude, lng: @island.longitude }]
+    @markers = [
+      {
+        lat: @island.latitude,
+        lng: @island.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { island: @island }),
+        image_url: helpers.asset_url("Love_islands.png")
+      }
+    ]
   end
 
   # CREATE
