@@ -1,4 +1,21 @@
-<%= render 'shared/banner' %>
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
+  <div class="container">
+    <h1><%="#{current_user.first_name}" %>, find your <strong>perfect</strong> paradise destination!</h1>
+    <p>Sort from hundreds of islands around the world.</p>
+    </br>
+    <div class="search-form">
+    <%= form_tag islands_path, method: :get do %>
+  <%= text_field_tag :query,
+    params[:query],
+    class: "form-control",
+    placeholder: "Find an island"
+  %>
+  <div id="submit-button"><%= submit_tag "Search", class: "btn btn-primary" %></div>
+<% end %>
+</div>
+
+  </div>
+</div>
 
 <div class="container mt-3">
   <div class="row">
@@ -7,21 +24,10 @@
     </div>
   </div>
 
-  <div class="search_bar">
-    <%= form_tag islands_path, method: :get do %>
-      <%= text_field_tag :query,
-        params[:query],
-        class: "form-control",
-        placeholder: "Find an island or location..."
-      %>
-      <%= submit_tag "Search", class: "btn btn-primary mt-3 mb-3" %>
-    <% end %>
-  </div>
-
   <div class="row">
     <div class="col">
       <% if @query %>
-        <p>You searched for <strong><%= @query %></strong>. We found <%= @islands.count %> islands out of our <%= Island.count %> on our website.</p>
+        <p>You searched for '<%= @query %>'. We found <%= @islands.count %> islands out of our <%= Island.count %> on our website.</p>
       <% else %>
         <p>Displaying all <%= Island.count %> islands.</p>
       <% end %>
@@ -58,5 +64,6 @@
         </div>
       </div>
     <% end %>
+  
   </div>
 </div>

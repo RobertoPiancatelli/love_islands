@@ -2,12 +2,13 @@ class IslandsController < ApplicationController
   skip_before_action :authenticate_user!, only: %i[index show]
 
   # INDEX
+
   def index
+    @query = params[:query]
     if params[:query].present?
-      sql_query = "name ILIKE :query OR location ILIKE :query"
-      @islands = Island.where(sql_query, query: "%#{params[:query]}%")
+      @islands = Island.search(params[:query])
     else
-      @islands = Island.all
+    @islands = Island.all
     end
   end
 
