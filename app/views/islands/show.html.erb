@@ -34,13 +34,15 @@
 
 <p>Average Rating XXXX</p>
 
-<p style="color:lightgray">_______________________________________________________________</p>
-</br></br>
-<h2>What to expect from your stay?</h2>
+<p>Price per night: £<%= @island.price_per_night %></p>
 
+<p style="color:lightgray">_______________________________________________________________</p>
+</br>
+<h2>What to expect from your stay?</h2>
+</br>
 <p><%= @island.description %></p>
 
-<p>Price per night: £<%= @island.price_per_night %></p>
+<p style="color:lightgray">_______________________________________________________________</p>
 
 <h4>Features of the island</h4>
 
@@ -71,9 +73,10 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+</div>
 
 
-<div class="container review">
+<div class="container" id="reviews">
 <h3>Reviews</h3>
    <ul class="list-group">
     <% @island.reviews.each do |review| %>
