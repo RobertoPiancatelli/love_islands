@@ -20,12 +20,13 @@ arr = [aimee, lukas, rob, jeremaia]
 
 puts "Running seed!"
 
+
 arr.each do |user|
 
   rand(1..5).times do
     island = Island.create(
       name: Faker::Ancient.titan,
-      location: Faker::Nation.nationality,
+      location: Faker::Address.city,
       price_per_night: 100,
       description: Faker::Lorem.sentences(number: 4),
       max_guests: 4,
