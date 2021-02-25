@@ -24,9 +24,12 @@
   background-size: cover;
   background-position: center;
   padding: 20px 0;
-  height: 100px;
+  height: 250px;
   text-align: center;
   margin-bottom: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .banner-small h1 {
