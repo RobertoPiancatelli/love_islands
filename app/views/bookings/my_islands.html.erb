@@ -1,33 +1,37 @@
 <div class="banner-small p5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
   <div class="container">
-    <h1>My Bookings</h1>
+    <h1>Manage your island properties</h1>
   </div>
 </div>
 
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-8 mt-3">
-      <h2>Manage your bookings</h2>
+      <h2>Your booking requests</h2>
         <% @islands.each do |island|%>
           <% island.bookings.each do |booking| %>
-          <div class="card-product mt-3">
-            <% if booking.island.photo.attached? %>
-              <img src="<%= cl_image_path booking.island.photo.key %>" />
-            <% else %>
-              <img src="https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg" />
-            <% end %>
-
-            <div class="card-product-infos">
-              <h2><%= island.name%></h2>
-              <p>Location:<strong><%= booking.island.location%></strong></p>
-              <p>Price:<strong><%= booking.island.price_per_night%></strong></p>
-              <% if booking.accepted %>
-                <%= link_to 'Booking confirmed', booking_accept_booking_path(booking)  %>
+            <div class="card-product mt-3">
+              <% if booking.island.photo.attached? %>
+                <img src="<%= cl_image_path booking.island.photo.key %>" />
               <% else %>
-                <%= link_to 'Accept', booking_accept_booking_path(booking)  %>
+                <img src="https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg" />
               <% end %>
+
+              <div class="card-product-box">
+                <div class="card-product-infos">
+                  <h2><%= island.name%></h2>
+                  <p>Location:<strong><%= booking.island.location%></strong></p>
+                  <p>Price:<strong><%= booking.island.price_per_night%></strong></p>
+                </div>
+                <div class="booking-request pr-4">
+                  <% if booking.accepted %>
+                    <%= link_to 'Booking confirmed', booking_accept_booking_path(booking), id: "book-button"  %>
+                  <% else %>
+                    <%= link_to 'Accept this booking?', booking_accept_booking_path(booking), id: "book-button-no-bg"  %>
+                  <% end %>
+                </div>
+              </div>
             </div>
-          </div>
           <% end %>
         <% end %>
       <%= link_to 'Back', islands_path, class: "btn btn-primary mt-3" %>

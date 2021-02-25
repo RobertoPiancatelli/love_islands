@@ -9,6 +9,16 @@
   text-align: center;
 }
 
+#book-button-no-bg {
+  border: solid 1px #ec4646;
+  border-radius: 10px;
+  color: red;
+  padding: 10px;
+  height: fit-content;
+  width: 200px;
+  text-align: center;
+}
+
 .btn {
   background-color: #ec4646;
   border-radius: 10px;
@@ -39,4 +49,21 @@
 
 .container-buttons {
   display: flex;
+}
+
+#book-request-sent {
+    border-radius: 10px;
+    color: gray;
+    padding: 10px;
+    height: fit-content;
+    text-align: center;
+}
+
+#book-request-confirmed {
+    border-radius: 10px;
+    color: green;
+    padding: 10px;
+    height: fit-content;
+    width: 200px;
+    text-align: center;
 }
