@@ -7,6 +7,17 @@
     </div>
   </div>
 
+  <div class="search_bar">
+    <%= form_tag islands_path, method: :get do %>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control",
+        placeholder: "Find an island or location..."
+      %>
+      <%= submit_tag "Search", class: "btn btn-primary mt-3 mb-3" %>
+    <% end %>
+  </div>
+
   <div class="row">
     <div class="col">
       <% if @query %>
