@@ -9,16 +9,20 @@
     <div class="col-md-8">
 
       <%= simple_form_for (@island) do |f| %>
-        <%= f.input :name %>
+        <%= f.input :name, input_html: { class: "nice-class" } %>
         <%= f.input :location %>
         <%= f.input :description %>
         <%= f.input :max_guests %>
         <%= f.input :price_per_night %>
-        <%= f.input :gym %>
-       <h1 class="bg-dark"> <%= f.input :boat %></h1>
-        <%= f.input :pool %>
-        <%= f.input :helicopter %>
         <%= f.input :bedrooms, collection: (1..10).to_a %>
+
+        <div class="d-flex space-between justify-content-between flex-wrap">
+          <%= f.input :gym, input_html: { class: "form-check-label"} %>
+          <%= f.input :boat, input_html: { class: "form-check-label" } %>
+          <%= f.input :pool, input_html: { class: "form-check-label" } %>
+          <%= f.input :helicopter, input_html: { class: "form-check-label" } %>
+        </div>
+
         <!-- Using single line instead of importing _img_form. -->
         <%= f.input :photo, as: :file%>
         <%= f.submit 'Add your Island', class: 'btn btn-primary' %>
