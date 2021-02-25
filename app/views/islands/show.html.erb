@@ -9,7 +9,7 @@
   <div class="container">
     <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
   </div>
-</div> 
+</div>
 <% end %>
 
 <div class ="container" style="margin: 0 auto">
@@ -28,7 +28,7 @@
                 <i class="material-icons mr-2">people</i><span><%= @island.max_guests %></span>
             </div>
           </div>
-      
+
           <div class="show-card-content">
             <div class="container">
                 <i class="material-icons mr-2">bed</i><span>5</span>
@@ -41,13 +41,17 @@
             </div>
           </div>
         </div>
-     
+
 
 <div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
 </br>
-<%= link_to 'Edit', edit_island_path(@island) %>
-</br>
-<%= link_to 'Delete island', island_path(@island), method: 'delete' %>
+  <% if current_user == @island.user %>
+    <%= link_to 'Edit', edit_island_path(@island) %>
+    </br>
+    <%= link_to 'Delete island', island_path(@island), method: 'delete' %>
+    <% else %>
+    <h4>hello</h4>
+  <% end %>
 </div>
 
 <div class="container review">

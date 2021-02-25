@@ -1,5 +1,5 @@
 class IslandsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:index, :show]
+  skip_before_action :authenticate_user!, only: %i[index show]
 
   # INDEX
   def index
@@ -46,7 +46,6 @@ class IslandsController < ApplicationController
 
   # UPDATE
   def update
-
     @island = Island.find(params[:id])
     if @island.update(island_params)
       redirect_to island_path(@island)
