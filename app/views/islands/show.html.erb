@@ -59,9 +59,10 @@
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+</div>
 
 
-<div class="container review">
+<div class="container" id="reviews">
 <h3>Reviews</h3>
    <ul class="list-group">
     <% @island.reviews.each do |review| %>
