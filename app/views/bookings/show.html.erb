@@ -7,8 +7,10 @@
 
 <div class="container">
 
+
 <h1>Congratulations, the <strong><%= @booking.island.name %> island</strong> is available<br> for the following dates!</h1>
   </br>
+
 <p>Check-in date: <%= @booking.check_in.strftime("%d %b, %Y") %></p>
 <p>Check-out date: <%= @booking.check_out.strftime("%d %b, %Y") %></p>
 <p>Total: £<%= (@booking.check_out - @booking.check_in).to_i * @booking.island.price_cents %></p>
@@ -17,7 +19,11 @@
     <%= hidden_field_tag 'booking_id', @booking.id %>
     <%= submit_tag 'Book now!', class: 'btn btn-primary' %>
     <% end %>
+<<<<<<< HEAD
   </br>
+=======
+
+>>>>>>> c34f7a4a7893ce680b6ed78dcfbecfedaac8c402
   </br>
 <%= link_to 'Back to Island', island_path(@booking.island) %>
 </div>

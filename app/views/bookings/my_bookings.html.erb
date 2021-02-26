@@ -18,9 +18,10 @@
               <div class="card-product-box">
                 <div class="card-product-infos">
                   <h2><%= booking.island.name%></h2>
-                  
+
                   <p>Location: <strong><%= booking.island.location%></strong></p>
-                  <p>Price: <strong>£<%= booking.island.price_cents%></strong></p>
+                  <p>Price: <strong><%= humanized_money_with_symbol(booking.island.price_cents)%></strong></p>
+
 
                 </div>
                 <div class="booking-request pr-4">
@@ -37,16 +38,15 @@
         <% end %>
 
 
-        <hr>
- <br>
- <h4>Rent a boat to improve your island experience!</h4>
+  <hr>
+  <br>
+    <h4>Rent a boat to improve your island experience!</h4>
     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary mt-1">Rent now!</a>
-    <br>
-<div>
+  <br>
   <br>
   <hr>
-
-<%= link_to 'Back', islands_path%>
-
-
+  <%= link_to 'Back', islands_path%>
+     </div>
+  </div>
+</div>
 

@@ -78,6 +78,7 @@
 <% else %>
     <% @island.reviews.each do |review| %>
     <div class="review">
+
     <% if review.booking.user.photo.attached? %>
     <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
     <% else %>
