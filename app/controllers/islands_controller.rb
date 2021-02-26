@@ -25,7 +25,7 @@ class IslandsController < ApplicationController
         lat: @island.latitude,
         lng: @island.longitude,
         infoWindow: render_to_string(partial: "info_window", locals: { island: @island }),
-        image_url: helpers.asset_url("Love_islands.png")
+        image_url: helpers.asset_url("Marker.png")
       }
     ]
   end
@@ -67,6 +67,6 @@ class IslandsController < ApplicationController
   private
 
   def island_params
-    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :photo)
+    params.require(:island).permit(:name, :location, :price_per_night, :description, :max_guests, :photo, :bedrooms)
   end
 end

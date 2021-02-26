@@ -30,7 +30,7 @@
 
 </br>
 
-<p>Island hosted by XXXX</p>
+<p>Island hosted by <%= @island.user.first_name %></p>
 
 <p>Price per night: £<%= @island.price_per_night %></p>
 
@@ -69,7 +69,12 @@
 <div class="reviews">
     <% @island.reviews.each do |review| %>
     <div class="review">
-    <p><%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %> Review by USERNAME</P>
+    
+    <% if review.booking.user.photo.attached? %>
+    <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
+    <% else %>
+     <p><%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
+        <% end %>
         <div class="badge badge-primary badge-pill">
           <% counter = 0 %>
           <% 5.times do %>
