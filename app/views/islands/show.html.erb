@@ -32,66 +32,54 @@
 
 <p>Island hosted by XXXX</p>
 
-<p>Average Rating XXXX</p>
-
 <p>Price per night: £<%= @island.price_per_night %></p>
 
-<p style="color:lightgray">_______________________________________________________________</p>
+<p style="color:lightgray">___________________________________________________________________________</p>
 </br>
-<h2>What to expect from your stay?</h2>
+<h3>What to expect from your stay?</h3>
 </br>
 <p><%= @island.description %></p>
 
-<p style="color:lightgray">_______________________________________________________________</p>
+<p style="color:lightgray">___________________________________________________________________________</p>
 
 <h4>Features of the island</h4>
 
-<div class ="container show-features">
-          <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">people</i><span><%= @island.max_guests %></span>
-            </div>
-          </div>
+<ul class="show-features">
+        
+  <li><i class="material-icons mr-2">people</i>Island can have maximum <%= @island.max_guests %> guests
+  </li>
 
-          <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">bed</i><span>5</span>
-            </div>
-          </div>
+<li><i class="material-icons mr-2">bed</i>This island has 5 bedrooms</li>
 
-           <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">pool</i><span>2</span>
-            </div>
-          </div>
-        </div>
-</br>
- 
+<li><i class="material-icons mr-2">pool</i>This island has a pool</li>
 
-<div class="container">
+<li><i class="material-icons mr-2">fitness_center</i>This island has a gym</li>
+  
+</ul>
+
+<p style="color:lightgray">___________________________________________________________________________</p>
+
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-</div>
+    </br>
 
-
-<div class="container" id="reviews">
 <h3>Reviews</h3>
-   <ul class="list-group">
+<div class="reviews">
     <% @island.reviews.each do |review| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span class="badge badge-primary badge-pill">
+    <div class="review">
+    <p><%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle" %> Review by USERNAME</P>
+        <div class="badge badge-primary badge-pill">
           <% counter = 0 %>
           <% 5.times do %>
             <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
             <% counter += 1 %>
           <% end %>
-        </span>
+        </div>
         <%= review.content %>
-      </li>
-      <hr>
+        </div>
     <% end %>
-  </ul>
-
+    
+</div>
 </div>
