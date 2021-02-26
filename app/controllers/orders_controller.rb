@@ -13,7 +13,7 @@ class OrdersController < ApplicationController
         currency: 'gbp',
         quantity: 1
       }],
-      success_url: order_url(order),
+      success_url: "http://localhost:3000/my_bookings",
       cancel_url: order_url(order)
     )
 
