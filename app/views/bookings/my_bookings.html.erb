@@ -18,8 +18,10 @@
               <div class="card-product-box">
                 <div class="card-product-infos">
                   <h2><%= booking.island.name%></h2>
+                  
                   <p>Location: <strong><%= booking.island.location%></strong></p>
                   <p>Price: <strong>£<%= booking.island.price_cents%></strong></p>
+
                 </div>
                 <div class="booking-request pr-4">
                   <% if booking.status == 'accepted' %>
@@ -34,6 +36,7 @@
             </div>
         <% end %>
 
+
         <hr>
  <br>
  <h4>Rent a boat to improve your island experience!</h4>
@@ -44,10 +47,6 @@
   <hr>
 
 <%= link_to 'Back', islands_path%>
-</div>
-  </div>
-</div>
-
 
 
 
