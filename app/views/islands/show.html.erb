@@ -21,7 +21,7 @@
  <% if current_user == @island.user %>
   <div class="container-buttons">
     <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
-    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete' %></span>
+    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete', data: { confirm: "Are you sure?" } %></span>
     </div>
     <% else %>
     <%= link_to "Book Now", new_island_booking_path(@island), id: "book-button" %>
@@ -32,7 +32,7 @@
 
 <p>Island hosted by <%= @island.user.first_name %></p>
 
-<p>Price per night: £<%= @island.price_per_night %></p>
+<p>Price per night: £<%= @island.price_cents %></p>
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 </br>
