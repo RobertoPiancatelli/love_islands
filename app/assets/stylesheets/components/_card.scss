@@ -38,12 +38,13 @@
   background-color: #f8f9fa;
   padding: 16px;
 }
-a {
-  color: #ec4646;
+.island-card a {
+  color: rgb(80, 80, 80);
 }
 
-a:hover {
-  color: #ec4646;
+.island-card a:hover {
+  color: rgb(80, 80, 80);
+  text-decoration: none;
 }
 
 .island-show-card {
