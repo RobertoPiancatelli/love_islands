@@ -1,22 +1,22 @@
+
+<div class="banner-small p5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://www.ecomagazine.com/images/Newsletter/0_2019/Week_11-18-19/birdseyeview_ocean.jpg');">
+  <div class="container">
+    <h1>Booking summary for <%= @booking.island.name %></h1>
+  </div>
+</div>
+
 <div class="container">
+
 
 <h1>Congratulations, the <strong><%= @booking.island.name %> island</strong> is available<br> for the following dates!</h1>
 <p>Check-in date: <%= @booking.check_in.strftime("%d %b, %Y") %></p>
 <p>Check-out date: <%= @booking.check_out.strftime("%d %b, %Y") %></p>
 <p>Total: £<%= (@booking.check_out - @booking.check_in).to_i * @booking.island.price_cents %></p>
-
-  <div class="container mb-5">
-    <p><strong>Want to rent a boat?</strong></p>
-    <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
- </div>
-
-
-<div id="book-button"><%= link_to 'Leave Review', new_booking_review_path(@booking) %></div>
 <br>
   <%= form_tag booking_orders_path(params[:id]) do %>
     <%= hidden_field_tag 'booking_id', @booking.id %>
     <%= submit_tag 'Book now!', class: 'btn btn-primary' %>
-  <% end %>
-<br>
+</br>
+  </br>
 <%= link_to 'Back to Island', island_path(@booking.island) %>
 </div>

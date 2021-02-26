@@ -11,33 +11,36 @@
   width: 100%;
   position: relative;
   margin: 0.5rem 0 1rem 0;
-  background-color: #fff;
-  border-radius: 2px;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12),
-    0 3px 1px -2px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background-color: rgb(247, 247, 247);
+  box-shadow: 2px 2px 5px rgb(209, 209, 209);
+  transition: 200ms;
 }
 
 .island-card:hover {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.3), 0 1px 5px 0 rgba(0, 0, 0, 0.3),
-    0 3px 1px -2px rgba(0, 0, 0, 0.3);
+  box-shadow: 2px 3px 7px rgb(209, 209, 209);
 }
 
 .island-card-image {
   height: 180px;
   background-position: center;
   background-size: cover;
+  border-radius: 10px;
 }
 
 .island-card-content {
-  padding: 16px;
-  background-color: #f8f9fa;
+  padding: 5px;
+  background-color: rgb(247, 247, 247);
+  padding: 10px;
 }
 
 .island-card-button {
   position: relative;
-  background-color: #f8f9fa;
-  padding: 16px;
+  background-color: rgb(247, 247, 247);
+  padding: 10px;
+  border-radius: 10px;
 }
+
 .island-card a {
   color: rgb(80, 80, 80);
 }
@@ -45,6 +48,15 @@
 .island-card a:hover {
   color: rgb(80, 80, 80);
   text-decoration: none;
+}
+
+.island-card-button a {
+  color: #ec4646;
+}
+
+.island-card-button a:hover {
+  color: #e93b3b;
+  text-decoration: underline;
 }
 
 .island-show-card {
@@ -67,4 +79,8 @@
   font-size: 20px;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
   color: #ec4646;
+}
+
+.island-card-title h4 {
+  font-size: 20px;
 }
