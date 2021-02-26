@@ -1,15 +1,17 @@
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-md-10">
-
-<%= simple_form_for [@island, @booking] do |f| %>
-  <%= f.input :check_in, as: :date, html5: true %>
-  <%= f.input :check_out, as: :date, html5: true %>
-  <%= f.input :guests %>
-  <div class="submit-button"><%= f.submit %></div>
-<% end %>
+      <h1>Enquire</h1>
+      <p>Please enter your time of travel</p>
+    
+      <%= simple_form_for [@island, @booking] do |f| %>
+        <%= f.input :check_in, as: :date, html5: true %>
+        <%= f.input :check_out, as: :date, html5: true %>
+        <%= f.input :guests %>
+        <div class="submit-button"><%= f.submit %></div>
+      <% end %>
 <!-- Fake payment method -->
-    <hr>
+    <!-- <hr>
     <h2>Total price: £2400 </h2>
     <hr>
     <h2>Payment</h2>
@@ -25,7 +27,7 @@
         <label for="cvv">CVV:</label>
         <input name="cvv" type="text" placeholder="***"/>
       </form>
-    <hr>
+    <hr> -->
     <!-- Fake payment method -->
 <br>
 <br>
