@@ -24,10 +24,9 @@
                   <p>Price:<strong><%= booking.island.price_per_night%></strong></p>
                 </div>
                 <div class="booking-request pr-4">
-                  <% if booking.accepted %>
-                    <%= link_to 'Booking confirmed', booking_accept_booking_path(booking), id: "book-button"  %>
-                  <% else %>
-                    <%= link_to 'Accept this booking?', booking_accept_booking_path(booking), id: "book-button-no-bg"  %>
+                  <% if booking.status == 'pending' %>
+                    <%= link_to 'Accept booking?', booking_accept_booking_path(booking, status:'accepted'), id: "book-button"  %>
+                    <%= link_to 'Reject this booking?', booking_accept_booking_path(booking, status:'rejected'), id: "book-button-no-bg"  %>
                   <% end %>
                 </div>
               </div>
