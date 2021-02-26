@@ -10,7 +10,6 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-
 ActiveRecord::Schema.define(version: 2021_02_26_120120) do
 
   # These are extensions that must be enabled in order to support this database
@@ -68,7 +67,6 @@ ActiveRecord::Schema.define(version: 2021_02_26_120120) do
     t.boolean "boat", default: false
     t.boolean "helicopter", default: false
     t.integer "bedrooms"
-
     t.index ["user_id"], name: "index_islands_on_user_id"
   end
 
