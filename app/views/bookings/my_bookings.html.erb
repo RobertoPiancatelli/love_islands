@@ -22,10 +22,12 @@
                   <p>Price:<strong><%= booking.island.price_per_night%></strong></p>
                 </div>
                 <div class="booking-request pr-4">
-                  <% if booking.accepted %>
-                    <div id="book-request-confirmed"> Booking confirmed <i class="fas fa-check"></i></div>
+                  <% if booking.status == 'accepted' %>
+                    <div id="book-request-confirmed"> Booking accepted <i class="fas fa-check"></i></div>
+                  <% elsif booking.status == 'rejected' %>
+                    <div id="book-request-sent"> Booking rejected</div>
                   <% else %>
-                    <div id="book-request-sent"> Booking request sent...</div>
+                    <div id="book-request-sent"> Booking pending</div>
                   <% end %>
                 </div>
               </div>
