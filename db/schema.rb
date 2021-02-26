@@ -61,12 +61,12 @@ ActiveRecord::Schema.define(version: 2021_02_26_120120) do
     t.string "image_url"
     t.float "latitude"
     t.float "longitude"
-    t.integer "price_cents", default: 0, null: false
     t.boolean "gym", default: false
     t.boolean "pool", default: false
     t.boolean "boat", default: false
     t.boolean "helicopter", default: false
     t.integer "bedrooms"
+    t.integer "price_cents", default: 0, null: false
     t.index ["user_id"], name: "index_islands_on_user_id"
   end
 
