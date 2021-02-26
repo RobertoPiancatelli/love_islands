@@ -18,7 +18,6 @@
 
 <h1 class="m-0"><%= @island.name %></h1>
 
-<p>Price per night: £<%= @island.price_cents %></p>
  <% if current_user == @island.user %>
   <div class="container-buttons">
     <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
@@ -33,7 +32,7 @@
 
 <p>Island hosted by <%= @island.user.first_name %></p>
 
-<p>Price per night: £<%= @island.price_per_night %></p>
+<p>Price per night: £<%= @island.price_cents %></p>
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 </br>
