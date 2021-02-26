@@ -8,6 +8,8 @@
 
 require "open-uri"
 require "faker"
+Order.destroy_all
+Booking.destroy_all
 Island.destroy_all
 User.destroy_all
 
