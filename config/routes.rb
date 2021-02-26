@@ -9,5 +9,14 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [:show] do
     resources :reviews, only: [:new, :create]
+    
+  end
+  resources :bookings, only: [:show] do
+    resources :orders, only: [:show, :create] do
+      resources :payments, only: [:new]
+    end
+  end
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new]
   end
 end

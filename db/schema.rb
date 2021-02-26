@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_25_112334) do
+ActiveRecord::Schema.define(version: 2021_02_25_141138) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,17 @@ ActiveRecord::Schema.define(version: 2021_02_25_112334) do
     t.index ["user_id"], name: "index_islands_on_user_id"
   end
 
+  create_table "orders", force: :cascade do |t|
+    t.string "state"
+    t.integer "amount_cents", default: 0, null: false
+    t.string "amount_currency", default: "GBP", null: false
+    t.string "checkout_session_id"
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["booking_id"], name: "index_orders_on_booking_id"
+  end
+
   create_table "reviews", force: :cascade do |t|
     t.text "content"
     t.integer "rating"
@@ -92,5 +103,6 @@ ActiveRecord::Schema.define(version: 2021_02_25_112334) do
   add_foreign_key "bookings", "islands"
   add_foreign_key "bookings", "users"
   add_foreign_key "islands", "users"
+  add_foreign_key "orders", "bookings"
   add_foreign_key "reviews", "bookings"
 end

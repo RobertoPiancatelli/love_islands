@@ -23,7 +23,7 @@ puts "Running seed!"
 arr.each do |user|
 
   rand(1..5).times do
-    island = Island.create(
+    island = Island.create!(
       name: Faker::Ancient.titan,
       location: Faker::Nation.nationality,
       price_cents: rand(300..500),
