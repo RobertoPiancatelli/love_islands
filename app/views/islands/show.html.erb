@@ -21,7 +21,7 @@
  <% if current_user == @island.user %>
   <div class="container-buttons">
     <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
-    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete' %></span>
+    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete', data: { confirm: "Are you sure?" } %></span>
     </div>
     <% else %>
     <%= link_to "Book Now", new_island_booking_path(@island), id: "book-button" %>
@@ -65,12 +65,6 @@
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 
- <% if current_user != @island.user %>
-    <div class="container mr-2 mb-5">
-    <p><strong>Want to rent a boat?</strong></p>
-     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
- </div>
- <% end %>
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -79,9 +73,11 @@
 
 <h3>Reviews</h3>
 <div class="reviews">
+<% if @island.reviews.count == 0 %>
+<p>There are no reviews yet.</p>
+<% else %>
     <% @island.reviews.each do |review| %>
     <div class="review">
-    
     <% if review.booking.user.photo.attached? %>
     <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
     <% else %>
@@ -96,6 +92,7 @@
         </div>
         <%= review.content %>
         </div>
+    <% end %>
     <% end %>
 
 </div>
