@@ -11,5 +11,14 @@ Rails.application.routes.draw do
   resources :bookings, only: [:show] do
     resources :reviews, only: [:new, :create]
     get "accept_booking", to: 'bookings#accept_booking'
+    
+  end
+  resources :bookings, only: [:show] do
+    resources :orders, only: [:show, :create] do
+      resources :payments, only: [:new]
+    end
+  end
+  resources :orders, only: [:show, :create] do
+    resources :payments, only: [:new]
   end
 end

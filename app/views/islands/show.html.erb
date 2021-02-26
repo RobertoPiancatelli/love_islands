@@ -18,6 +18,7 @@
 
 <h1 class="m-0"><%= @island.name %></h1>
 
+<p>Price per night: £<%= @island.price_cents %></p>
  <% if current_user == @island.user %>
   <div class="container-buttons">
     <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
@@ -65,12 +66,6 @@
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 
- <% if current_user != @island.user %>
-    <div class="container mr-2 mb-5">
-    <p><strong>Want to rent a boat?</strong></p>
-     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
- </div>
- <% end %>
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">

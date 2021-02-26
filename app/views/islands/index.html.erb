@@ -53,7 +53,8 @@
                 <i class="material-icons mr-2">people</i><span><%= island.max_guests %></span>
               </div>
               <div class="flex ml-3">
-                £<%= island.price_cents %> per night 
+                <p>Price per night: <%= humanized_money_with_symbol(island.price) %></p>
+
               </div>
             </div>
           </div>
