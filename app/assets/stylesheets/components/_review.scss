@@ -1,5 +1,19 @@
+.reviews {
+  margin-top: 15px;
+  width: 650px;
+}
+
 .review {
-  margin-top: 50px;
-  width: 600px;
-  margin-left: 80px;
+  border: solid 1px lightgray;
+  border-radius: 10px;
+  margin-bottom: 15px;
+  padding: 10px;
+}
+
+.badge {
+  background-color: white;
+}
+
+.fa {
+  color: #ec4646;
 }

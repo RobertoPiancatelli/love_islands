@@ -1,9 +1,17 @@
 <div class="container">
+
 <h1>Your details summary for your booking:</h1>
 <p><%= @booking.island.name %> island</p>
 <p>Check-in date: <%= @booking.check_in.strftime("%d %b, %Y") %></p>
 <p>Check-out date: <%= @booking.check_out.strftime("%d %b, %Y") %></p>
 <p>Total: £<%= (@booking.check_out - @booking.check_in).to_i * @booking.island.price_cents %></p>
+
+  <div class="container mr-2 mb-5">
+    <p><strong>Want to rent a boat?</strong></p>
+    <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
+ </div>
+
+
 <div id="book-button"><%= link_to 'Leave Review', new_booking_review_path(@booking) %></div>
 <br>
 <h2>Proceed to payment if the details above are correct</h2>

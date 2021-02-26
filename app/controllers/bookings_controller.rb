@@ -28,6 +28,18 @@ class BookingsController < ApplicationController
     
   end
 
+  def my_islands
+    @islands = current_user.islands
+    # @island = Island.find(params[:id])
+  end
+
+  def accept_booking
+    @booking = Booking.find(params[:booking_id])
+    @booking.status = params[:status]
+    @booking.save
+    redirect_to my_islands_path
+  end
+
   private
 
   def booking_params

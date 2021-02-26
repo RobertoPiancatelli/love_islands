@@ -7,9 +7,19 @@
 @import "bootstrap/scss/bootstrap";
 @import "font-awesome-sprockets";
 @import "font-awesome";
+@import "jquery-bar-rating/dist/themes/css-stars";
+
 
 // Your CSS partials
 @import "components/index";
 @import "pages/index";
 
+body {
+  background-color: white;
+}
 
+.show-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 0px;
+}

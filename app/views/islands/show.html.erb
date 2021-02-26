@@ -1,82 +1,104 @@
   <% if @island.photo.attached? %>
         <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('<%= cl_image_path @island.photo.key %>');">
   <div class="container">
-    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
+    <h1>Welcome to <%= @island.location %></h1>
   </div>
 </div>
       <% else %>
         <div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.2),rgba(0,0,0,0.2)), url('https://img.theculturetrip.com/wp-content/uploads/2018/04/shutterstock_1050077834.jpg');">
   <div class="container">
-    <h1>Welcome to <%= @island.location %>  🌴🌴 </h1>
+    <h1>Welcome to <%= @island.location %></h1>
   </div>
 </div>
 <% end %>
 
-<div class ="container" style="margin: 0 auto">
+<div class ="container">
 
-<h1><%= @island.name %></h1>
+<div class ="show-header">
 
-<p><%= @island.description %></p>
+<h1 class="m-0"><%= @island.name %></h1>
 
 <p>Price per night: £<%= @island.price_cents %></p>
+ <% if current_user == @island.user %>
+  <div class="container-buttons">
+    <div id="edit-button"><%= link_to 'Edit', edit_island_path(@island) %></div>
+    <span id="delete-button"><%= link_to 'Delete island', island_path(@island), method: 'delete' %></span>
+    </div>
+    <% else %>
+    <%= link_to "Book Now", new_island_booking_path(@island), id: "book-button" %>
+  <% end %>
+  </div>
+
+</br>
+
+<p>Island hosted by <%= @island.user.first_name %></p>
+
+<p>Price per night: £<%= @island.price_per_night %></p>
+
+<p style="color:lightgray">___________________________________________________________________________</p>
+</br>
+<h3>What to expect from your stay?</h3>
+</br>
+<p><%= @island.description %></p>
+
+<p style="color:lightgray">___________________________________________________________________________</p>
 
 <h4>Features of the island</h4>
 
-<div class ="container show-features">
-          <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">people</i><span><%= @island.max_guests %></span>
-            </div>
-          </div>
-
-          <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">bed</i><span>5</span>
-            </div>
-          </div>
-
-           <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">pool</i><span>2</span>
-            </div>
-          </div>
-        </div>
-
-
-<div id="book-button"><%= link_to "Book Now", new_island_booking_path(@island) %></div>
-</br>
-  <% if current_user == @island.user %>
-    <%= link_to 'Edit', edit_island_path(@island) %>
-    </br>
-    <%= link_to 'Delete island', island_path(@island), method: 'delete' %>
-    <% else %>
-    <h4>hello</h4>
+<ul class="show-features">
+  <li><i class="material-icons mr-2">people</i>Island can have maximum <%= @island.max_guests %> <strong>Guests</strong>
+  </li>
+<li><i class="material-icons mr-2">bed</i>This island has <%= @island.bedrooms %> <strong>Bedrooms</strong></li>
+  <% if @island.pool == true %>
+    <li><i class="material-icons mr-2">pool</i>This island has a <strong>Pool</strong></li>
   <% end %>
-</div>
 
-<div class="container">
+  <% if @island.gym == true %>
+    <li><i class="material-icons mr-2">fitness_center</i>This island has a <strong>Gym</strong></li>
+  <% end %>
+  <% if @island.helicopter == true %>
+    <li><i class="material-icons mr-2">flight_takeoff</i>This island has a <strong>Helicopter</strong></li>
+  <% end %>
+  <% if @island.boat == true %>
+    <li><i class="material-icons mr-2">directions_boat</i>This island has a <strong>Boat</strong></li>
+  <% end %>
+</ul>
+
+<p style="color:lightgray">___________________________________________________________________________</p>
+
+ <% if current_user != @island.user %>
+    <div class="container mr-2 mb-5">
+    <p><strong>Want to rent a boat?</strong></p>
+     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
+ </div>
+ <% end %>
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
+  </br>
 
-
-<div class="container review">
 <h3>Reviews</h3>
-   <ul class="list-group">
+<div class="reviews">
     <% @island.reviews.each do |review| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span class="badge badge-primary badge-pill">
+    <div class="review">
+    
+    <% if review.booking.user.photo.attached? %>
+    <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
+    <% else %>
+     <p><%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
+        <% end %>
+        <div class="badge badge-primary badge-pill">
           <% counter = 0 %>
           <% 5.times do %>
             <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
             <% counter += 1 %>
           <% end %>
-        </span>
+        </div>
         <%= review.content %>
-      </li>
-      <hr>
+        </div>
     <% end %>
-  </ul>
 
+</div>
+</div>
 </div>
