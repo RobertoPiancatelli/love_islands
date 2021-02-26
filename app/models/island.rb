@@ -15,11 +15,13 @@ class Island < ApplicationRecord
   has_many :bookings
   has_many :reviews, through: :bookings
   # VALIDATIONS
-  validates :bedrooms, inclusion: { in: 0..10 }
   validates :name, presence: true
+  validates :bedrooms, inclusion: { in: 0..10 }
   validates :location, presence: true
-  validates :price_per_night, presence: true
+  validates :price_cents, presence: true
   validates :description, presence: true
   validates :max_guests, presence: true
-  validates :photo, presence: true
+  # validates :photo, presence: true
+  # Stripe
+  monetize :price_cents
 end

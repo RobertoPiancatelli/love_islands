@@ -7,13 +7,12 @@
 <div class="container p-5 mb-2 bg-white rounded" style="width: 600px;">
   <div class="row justify-content-center">
     <div class="col-md-8">
-
       <%= simple_form_for (@island) do |f| %>
         <%= f.input :name, input_html: { class: "nice-class" } %>
         <%= f.input :location %>
         <%= f.input :description %>
         <%= f.input :max_guests %>
-        <%= f.input :price_per_night %>
+        <%= f.input :price_cents, label:"Price per night" %>
         <%= f.input :bedrooms, collection: (1..10) %>
 
         <div class="d-flex space-between justify-content-between flex-wrap">
