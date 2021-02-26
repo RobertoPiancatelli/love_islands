@@ -65,10 +65,12 @@
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 
- <div class="container mr-2 mb-5">
+ <% if current_user != @island.user %>
+    <div class="container mr-2 mb-5">
     <p><strong>Want to rent a boat?</strong></p>
-    <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
+     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
  </div>
+ <% end %>
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
