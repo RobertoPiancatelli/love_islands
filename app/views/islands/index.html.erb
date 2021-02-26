@@ -35,6 +35,7 @@
 
   <div class="row">
     <% @islands.each do |island| %>
+    <%= link_to island_path(island) do %>
       <div class="col-4">
         <div class="island-card">
           <% if island.photo.attached? %>
@@ -62,6 +63,7 @@
           </div>
         </div>
       </div>
+      <% end %>
     <% end %>
   
   </div>

@@ -35,11 +35,7 @@ class BookingsController < ApplicationController
 
   def accept_booking
     @booking = Booking.find(params[:booking_id])
-    if @booking.accepted
-      @booking.accepted = false
-    else
-      @booking.accepted = true
-    end
+    @booking.status = params[:status]
     @booking.save
     redirect_to my_islands_path
   end

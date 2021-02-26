@@ -1,6 +1,6 @@
-  <div class="banner-small" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
+<div class="banner-small p5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
   <div class="container">
-    <h1>My Bookings</h1>
+    <h1>My bookings</h1>
   </div>
 </div>
 
@@ -8,17 +8,39 @@
   <div class="row justify-content-center">
     <div class="col-md-8">
         <% @bookings.each do |booking|%>
-          <h3 style="color:#ec4646"><%= booking.island.name%></h3>
-          <p>Check-in: <%= booking.check_in%></p>
-          <p>Check-out <%= booking.check_out%></p>
-          <% number_of_nights = (booking.check_out - booking.check_in).to_i%>
-          <p>Number of nights: <%= number_of_nights %></p>
-          <p>Number of guests: <%= booking.guests%></p>
-          <% total_price = number_of_nights * booking.total_price %>
-          <p>Total price: £<%= total_price%></p>
-<% end %>
+          <div class="card-product mt-3">
+              <% if booking.island.photo.attached? %>
+                <img src="<%= cl_image_path booking.island.photo.key %>" />
+              <% else %>
+                <img src="https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg" />
+              <% end %>
 
-<%= link_to 'Back', islands_path, class: "btn btn-primary" %>
+              <div class="card-product-box">
+                <div class="card-product-infos">
+                  <h2><%= booking.island.name%></h2>
+                  <p>Location:<strong><%= booking.island.location%></strong></p>
+                  <p>Price:<strong><%= booking.island.price_per_night%></strong></p>
+                </div>
+                <div class="booking-request pr-4">
+                  <% if booking.status == 'accepted' %>
+                    <div id="book-request-confirmed"> Booking accepted <i class="fas fa-check"></i></div>
+                  <% elsif booking.status == 'rejected' %>
+                    <div id="book-request-sent"> Booking rejected</div>
+                  <% else %>
+                    <div id="book-request-sent"> Booking pending</div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+
+
+        <% end %>
+
+<%= link_to 'Back', islands_path, class: "btn btn-primary mt-3" %>
 </div>
   </div>
 </div>
+
+
+
+

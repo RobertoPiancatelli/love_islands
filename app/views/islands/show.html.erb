@@ -30,69 +30,74 @@
 
 </br>
 
-<p>Island hosted by XXXX</p>
-
-<p>Average Rating XXXX</p>
+<p>Island hosted by <%= @island.user.first_name %></p>
 
 <p>Price per night: £<%= @island.price_per_night %></p>
 
-<p style="color:lightgray">_______________________________________________________________</p>
+<p style="color:lightgray">___________________________________________________________________________</p>
 </br>
-<h2>What to expect from your stay?</h2>
+<h3>What to expect from your stay?</h3>
 </br>
 <p><%= @island.description %></p>
 
-<p style="color:lightgray">_______________________________________________________________</p>
+<p style="color:lightgray">___________________________________________________________________________</p>
 
 <h4>Features of the island</h4>
 
-<div class ="container show-features">
-          <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">people</i><span><%= @island.max_guests %></span>
-            </div>
-          </div>
+<ul class="show-features">
+  <li><i class="material-icons mr-2">people</i>Island can have maximum <%= @island.max_guests %> <strong>Guests</strong>
+  </li>
+<li><i class="material-icons mr-2">bed</i>This island has <%= @island.bedrooms %> <strong>Bedrooms</strong></li>
+  <% if @island.pool == true %>
+    <li><i class="material-icons mr-2">pool</i>This island has a <strong>Pool</strong></li>
+  <% end %>
 
-          <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">bed</i><span>5</span>
-            </div>
-          </div>
+  <% if @island.gym == true %>
+    <li><i class="material-icons mr-2">fitness_center</i>This island has a <strong>Gym</strong></li>
+  <% end %>
+  <% if @island.helicopter == true %>
+    <li><i class="material-icons mr-2">flight_takeoff</i>This island has a <strong>Helicopter</strong></li>
+  <% end %>
+  <% if @island.boat == true %>
+    <li><i class="material-icons mr-2">directions_boat</i>This island has a <strong>Boat</strong></li>
+  <% end %>
+</ul>
 
-           <div class="show-card-content">
-            <div class="container">
-                <i class="material-icons mr-2">pool</i><span>2</span>
-            </div>
-          </div>
-        </div>
-</br>
- 
+<p style="color:lightgray">___________________________________________________________________________</p>
 
-<div class="container">
+ <% if current_user != @island.user %>
+    <div class="container mr-2 mb-5">
+    <p><strong>Want to rent a boat?</strong></p>
+     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
+ </div>
+ <% end %>
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
     </div>
-</div>
+  </br>
 
-
-<div class="container" id="reviews">
 <h3>Reviews</h3>
-   <ul class="list-group">
+<div class="reviews">
     <% @island.reviews.each do |review| %>
-      <li class="list-group-item d-flex justify-content-between align-items-center">
-        <span class="badge badge-primary badge-pill">
+    <div class="review">
+    
+    <% if review.booking.user.photo.attached? %>
+    <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
+    <% else %>
+     <p><%= image_tag 'https://kitt.lewagon.com/placeholder/users/ssaunier', class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
+        <% end %>
+        <div class="badge badge-primary badge-pill">
           <% counter = 0 %>
           <% 5.times do %>
             <i class="fa <%= review.rating > counter ? 'fa-star' : 'fa-star-o' %>"></i>
             <% counter += 1 %>
           <% end %>
-        </span>
+        </div>
         <%= review.content %>
-      </li>
-      <hr>
+        </div>
     <% end %>
-  </ul>
 
+</div>
 </div>
 </div>

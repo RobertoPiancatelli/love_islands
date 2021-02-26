@@ -1,36 +1,46 @@
 #book-button {
-  border: solid 1px #ec4646;
+  border-color: transparent;
   border-radius: 10px;
   color: white;
-  background-color: #ec4646;
+  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
   padding: 10px;
   height: fit-content;
   width: 200px;
   text-align: center;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
+  transition: 500ms;
+}
+
+#book-button:hover {
+  background-image: linear-gradient(-20deg, #fd4c64 0%, #ff8f2d 100%);
+  border-color: transparent;
+  text-decoration: none;
+  box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .btn {
-  background-color: #ec4646;
+  background-image: linear-gradient(-20deg, #fc6076 0%, #ff9a44 100%);
   border-radius: 10px;
-  border-color: #ec4646;
+  border-color: transparent;
+  transition: 500ms;
 }
 
 .btn:hover {
-  background-color: #ff414d;
-  border-color: #ff414d;
+  background-image: linear-gradient(-20deg, #fd4c64 0%, #ff8f2d 100%);
+  border-color: transparent;
 }
 
 #edit-button a {
-  border: solid 1px green;
+  border: transparent;
   border-radius: 10px;
   color: white;
-  background-color: green;
+  background-image: linear-gradient(-20deg, #28ad0d 0%, #13a00f 100%);
   padding: 10px;
   margin-right: 10px;
 }
 
 #delete-button a {
-  border: solid 1px #ec4646;
+  border: transparent;
   border-radius: 10px;
   color: white;
   background-color: #ec4646;
@@ -39,4 +49,21 @@
 
 .container-buttons {
   display: flex;
+}
+
+#book-request-sent {
+  border-radius: 10px;
+  color: gray;
+  padding: 10px;
+  height: fit-content;
+  text-align: center;
+}
+
+#book-request-confirmed {
+  border-radius: 10px;
+  color: green;
+  padding: 10px;
+  height: fit-content;
+  width: 200px;
+  text-align: center;
 }

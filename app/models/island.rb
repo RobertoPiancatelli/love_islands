@@ -16,7 +16,7 @@ class Island < ApplicationRecord
   has_many :reviews, through: :bookings
   # VALIDATIONS
   validates :bedrooms, inclusion: { in: 0..10 }
-  validates :name, presence: true, uniqueness: true
+  validates :name, presence: true
   validates :location, presence: true
   validates :price_per_night, presence: true
   validates :description, presence: true
