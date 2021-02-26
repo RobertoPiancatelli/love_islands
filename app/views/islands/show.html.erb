@@ -33,7 +33,7 @@
 
 <p>Island hosted by <%= @island.user.first_name %></p>
 
-<p>Price per night: £<%= @island.price_per_night %></p>
+<p>Price per night: £<%= @island.price_cents %></p>
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 </br>
@@ -66,12 +66,6 @@
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 
- <% if current_user != @island.user %>
-    <div class="container mr-2 mb-5">
-    <p><strong>Want to rent a boat?</strong></p>
-     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
- </div>
- <% end %>
     <div id="map"
       data-markers="<%= @markers.to_json %>"
       data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>">
@@ -82,7 +76,7 @@
 <div class="reviews">
     <% @island.reviews.each do |review| %>
     <div class="review">
-    
+
     <% if review.booking.user.photo.attached? %>
     <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
     <% else %>
