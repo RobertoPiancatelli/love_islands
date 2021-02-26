@@ -33,7 +33,7 @@
 
 <p>Island hosted by <%= @island.user.first_name %></p>
 
-<p>Price per night: £<%= @island.price_per_night %></p>
+<p>Price per night: £<%= @island.price_cents %></p>
 
 <p style="color:lightgray">___________________________________________________________________________</p>
 </br>
@@ -82,7 +82,7 @@
 <div class="reviews">
     <% @island.reviews.each do |review| %>
     <div class="review">
-    
+
     <% if review.booking.user.photo.attached? %>
     <p><%= cl_image_tag review.booking.user.photo.key, class: "avatar" %> Review by <%= review.booking.user.first_name %></p>
     <% else %>
