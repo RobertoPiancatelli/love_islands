@@ -29,7 +29,6 @@ arr.each do |user|
       name: Faker::Ancient.titan,
       location: Faker::Address.city,
       price_cents: rand(300..500),
-
       description: Faker::Lorem.sentences(number: 4),
       max_guests: 4,
       user: user,
