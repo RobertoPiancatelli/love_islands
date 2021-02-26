@@ -1,6 +1,6 @@
 <div class="banner-small p5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
   <div class="container">
-    <h1>My bookings</h1>
+    <h1>Manage my holidays</h1>
   </div>
 </div>
 
@@ -18,21 +18,24 @@
               <div class="card-product-box">
                 <div class="card-product-infos">
                   <h2><%= booking.island.name%></h2>
-                  <p>Location:<strong><%= booking.island.location%></strong></p>
-                  <p>Price:<strong><%= booking.island.price_cents%></strong></p>
+                  
+                  <p>Location: <strong><%= booking.island.location%></strong></p>
+                  <p>Price: <strong>£<%= booking.island.price_cents%></strong></p>
+
                 </div>
                 <div class="booking-request pr-4">
                   <% if booking.status == 'accepted' %>
-                    <div id="book-request-confirmed"> Booking accepted <i class="fas fa-check"></i></div>
+                    <div id="book-request-confirmed">Booking accepted <i class="fas fa-check"></i><hr><%= link_to 'Leave Review', new_booking_review_path(booking),class: "btn-review" %></div>
                   <% elsif booking.status == 'rejected' %>
-                    <div id="book-request-sent"> Booking rejected</div>
+                    <div id="book-request-sent">Booking rejected</div>
                   <% else %>
-                    <div id="book-request-sent"> Booking pending</div>
+                    <div id="book-request-sent">Booking pending</div>
                   <% end %>
                 </div>
               </div>
             </div>
         <% end %>
+
 
          <p><strong>Want to add a boat to your booking?</strong></p>
     <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary ">Click here!</a>
@@ -42,6 +45,17 @@
   </div>
 </div>
 
+
+        <hr>
+ <br>
+ <h4>Rent a boat to improve your island experience!</h4>
+    <a href="http://floatifyapp.herokuapp.com/" class="btn btn-primary mt-1">Rent now!</a>
+    <br>
+<div>
+  <br>
+  <hr>
+
+<%= link_to 'Back', islands_path%>
 
 
 
