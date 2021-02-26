@@ -16,6 +16,7 @@
   <%= form_tag booking_orders_path(params[:id]) do %>
     <%= hidden_field_tag 'booking_id', @booking.id %>
     <%= submit_tag 'Book now!', class: 'btn btn-primary' %>
+    <% end %>
 </br>
   </br>
 <%= link_to 'Back to Island', island_path(@booking.island) %>
