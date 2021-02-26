@@ -1,2 +1,21 @@
-<h2><%= island.name %></h2>
-<p><%= island.location %></p>
+<div class="container">
+  <h5><%= island.name %></h5>
+  <ul class="show-features">
+  <li><i class="material-icons mr-2">people</i>Island can have maximum <%= @island.max_guests %> <strong>Guests</strong>
+  </li>
+<li><i class="material-icons mr-2">bed</i>This island has <%= @island.bedrooms %> <strong>Bedrooms</strong></li>
+  <% if @island.pool == true %>
+    <li><i class="material-icons mr-2">pool</i>This island has a <strong>Pool</strong></li>
+  <% end %>
+
+  <% if @island.gym == true %>
+    <li><i class="material-icons mr-2">fitness_center</i>This island has a <strong>Gym</strong></li>
+  <% end %>
+  <% if @island.helicopter == true %>
+    <li><i class="material-icons mr-2">flight_takeoff</i>This island has a <strong>Helicopter</strong></li>
+  <% end %>
+  <% if @island.boat == true %>
+    <li><i class="material-icons mr-2">directions_boat</i>This island has a <strong>Boat</strong></li>
+  <% end %>
+</ul>
+</div>
