@@ -1,8 +1,16 @@
+<div class="banner-small p5" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://media.cntraveler.com/photos/5d83b27ee1494900093a5627/master/pass/Cebu-&-Visayan-Islands,-Philippines_GettyImages-1074254788.jpg);">
+  <div class="container">
+    <h1>Proceed with payment</h1>
+  </div>
+</div>
+
 <div class="container">
   <div class="row py-4">
+
     <div class="col-md-3"><%= cl_image_path booking.island.photo.key, width: '100%' %></div>
+
     <div class="col">
-      <h1>Proceed with payment</h1>
+      <h1>Payment details</h1>
       <p>Booking of <strong><%= @booking.island.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
       <button id="pay" class="btn btn-primary">Pay</button>
       <script src="https://js.stripe.com/v3/"></script>
