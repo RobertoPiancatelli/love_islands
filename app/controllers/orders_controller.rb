@@ -8,7 +8,9 @@ class OrdersController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: booking.island.name,
-        images: [booking.island.image_url],
+
+        #Fix this line, needs to send URL, not currently working
+        images: booking.island.image_url,
         amount: final_price,
         currency: 'gbp',
         quantity: 1
