@@ -10,7 +10,7 @@ class OrdersController < ApplicationController
         name: booking.island.name,
 
         #Fix this line, needs to send URL, not currently working
-        images: booking.island.image_url,
+        images: [Cloudinary::Utils.cloudinary_url(booking.island.photo.key)],
         amount: final_price,
         currency: 'gbp',
         quantity: 1
