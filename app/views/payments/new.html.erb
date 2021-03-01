@@ -6,7 +6,9 @@
 
 <div class="container">
   <div class="row py-4">
-    <div class="col-md-3"><%= image_tag @booking.island.image_url, width: '100%', class:"island-card-image"  %></div>
+
+    <div class="col-md-3"><%= cl_image_path booking.island.photo.key, width: '100%' %></div>
+
     <div class="col">
       <h1>Payment details</h1>
       <p>Booking of <strong><%= @booking.island.name %></strong> for <strong><%= humanized_money_with_symbol @order.amount %></strong></p>
