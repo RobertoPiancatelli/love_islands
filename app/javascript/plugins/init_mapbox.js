@@ -5,8 +5,7 @@ const buildMap = (mapElement) => {
   return new mapboxgl.Map({
     container: 'map',
     style: 'mapbox://styles/mapbox/streets-v10',
-    zoom: 5
-
+    zoom: 3
   });
 };
 
@@ -40,8 +39,6 @@ const initMapbox = () => {
     const markers = JSON.parse(mapElement.dataset.markers);
     addMarkersToMap(map, markers);
     fitMapToMarkers(map, markers);
-    disableDefaultUI: true;
-
   }
 };
 
