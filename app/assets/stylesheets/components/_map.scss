@@ -3,6 +3,7 @@
   height: 300px;
   border-radius: 20px;
   margin-left: 100px;
+  z-index: 2;
 }
 
 // .mapboxgl-canvas {
@@ -16,6 +17,10 @@
 //   position: absolute;
 // }
 
-// .mapboxgl-control-container {
-//   visibility: hidden;
-// }
+.mapboxgl-control-container {
+  visibility: hidden;
+}
+
+.marker .mapboxgl-marker .mapboxgl-marker-anchor-center{
+ z-index: 0;
+}
