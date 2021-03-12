@@ -26,11 +26,11 @@ const addMarkersToMap = (map, markers) => {
   });
 };
 
-const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { maxZoom: 3 });
-};
+// const fitMapToMarkers = (map, markers) => {
+//   const bounds = new mapboxgl.LngLatBounds();
+//   markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+//   map.fitBounds(bounds, { maxZoom: 3 });
+// };
 
 const initMapbox = () => {
   const mapElement = document.getElementById('map');
