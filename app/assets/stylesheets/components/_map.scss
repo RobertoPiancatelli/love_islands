@@ -2,6 +2,7 @@
   width: 650px;
   height: 500px;
   border-radius: 20px;
+  margin-bottom: 200px;
 }
 
 // .mapboxgl-canvas {
@@ -14,4 +15,5 @@
 // }
 .mapboxgl-ctrl .mapboxgl-ctrl-attrib {
   visibility: hidden;
+  position: absolute;
 }
