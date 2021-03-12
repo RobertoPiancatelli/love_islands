@@ -1,6 +1,5 @@
 #map {
   width: 650px;
-  height: 1000px;
   border-radius: 20px;
   margin-bottom: 200px;
 }
@@ -11,7 +10,11 @@
     // left: 0;
     height: 600px;
 }
-.mapboxgl-ctrl .mapboxgl-ctrl-attrib {
+// .mapboxgl-ctrl .mapboxgl-ctrl-attrib {
+//   visibility: hidden;
+//   position: absolute;
+// }
+
+.mapboxgl-control-container {
   visibility: hidden;
-  position: absolute;
 }
