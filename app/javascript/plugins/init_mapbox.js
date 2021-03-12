@@ -11,6 +11,7 @@ const buildMap = (mapElement) => {
 
 const addMarkersToMap = (map, markers) => {
   markers.forEach((marker) => {
+    const element = document.createElement('div');
     const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
     console.log(marker.image_url)
       element.className = 'marker';
