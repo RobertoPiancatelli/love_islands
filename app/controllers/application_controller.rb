@@ -10,6 +10,6 @@ class ApplicationController < ActionController::Base
   end
 
   def default_url_options
-  { host: ENV["www.love-island.com"] || "localhost:3000" }
-end
+    { host: ENV["https://love-islands.herokuapp.com/"] || "localhost:3000" }
+  end
 end
