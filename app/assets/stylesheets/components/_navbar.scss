@@ -1,6 +1,5 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background-color: rgba(255, 255, 255, 0.884);
   transition: 0.5s background-color ease;
 }
 
@@ -19,12 +18,19 @@
 }
 
 .navbar-lewagon-white {
-  background-color: white;
-  z-index: 5;
+  background-color: white !important;
+  transition: 0.5s background-color ease;
+  box-shadow: 2px 2px 5px #d1d1d1;
+  z-index: 1;
 }
 
 #navbarDropdown:hover {
   cursor: pointer;
+}
+
+.nav-wrapper{
+  background-color: rgba(255, 255, 255, 0.884);
+  z-index: 1;
 }
 
 .bumper{
