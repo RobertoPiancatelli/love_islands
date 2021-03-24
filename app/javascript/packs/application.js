@@ -46,7 +46,7 @@ document.addEventListener('turbolinks:load', () => {
 // nav bar
 
 const initUpdateNavbarOnScroll = () => {
-  const navbar = document.querySelector('.navbar-lewagon');
+  const navbar = document.querySelector('.nav-wrapper');
   if (navbar) {
     window.addEventListener('scroll', () => {
       if (window.scrollY >= window.innerHeight) {

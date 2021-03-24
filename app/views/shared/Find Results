@@ -1,0 +1,30 @@
+Searching 194 files for ".navbar-lewagon"
+
+/Users/jeremaiaharrison/code/JHarrison89/love_islands/app/assets/stylesheets/components/_navbar.scss:
+    1: .navbar-lewagon {
+    2    justify-content: space-between;
+    .
+    5  }
+    6
+    7: .navbar-lewagon .navbar-collapse {
+    8    flex-grow: 0;
+    9  }
+   10
+   11: .navbar-lewagon .navbar-brand img {
+   12    width: 150px;
+   13  }
+   ..
+   19  }
+   20
+   21: .navbar-lewagon-white {
+   22    background-color: white;
+   23    z-index: 5;
+
+/Users/jeremaiaharrison/code/JHarrison89/love_islands/app/javascript/packs/application.js:
+   47
+   48  const initUpdateNavbarOnScroll = () => {
+   49:   const navbar = document.querySelector('.navbar-lewagon');
+   50    if (navbar) {
+   51      window.addEventListener('scroll', () => {
+
+5 matches across 2 files
