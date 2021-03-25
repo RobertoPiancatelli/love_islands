@@ -36,7 +36,7 @@
   <div class="row">
     <% @islands.each do |island| %>
     <%= link_to island_path(island) do %>
-      <div class="col-4">
+      <div class="col-12 col-md-6 col-lg-4">
         <div class="island-card">
           <% if island.photo.attached? %>
             <div class="island-card-image" style="background-image: url('<%= cl_image_path island.photo.key %>')"></div>
