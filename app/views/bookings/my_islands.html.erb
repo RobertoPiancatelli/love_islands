@@ -12,9 +12,9 @@
           <% island.bookings.each do |booking| %>
             <div class="card-product mt-3">
               <% if booking.island.photo.attached? %>
-                <img src="<%= cl_image_path booking.island.photo.key %>" />
+                <img class="d-none" src="<%= cl_image_path booking.island.photo.key %>" />
               <% else %>
-                <img src="https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg" />
+                <img class="d-none" src="https://www.planetware.com/photos-large/SEY/best-islands-bora-bora.jpg" />
               <% end %>
 
               <div class="card-product-box">
