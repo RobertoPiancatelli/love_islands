@@ -3,9 +3,9 @@
     <div class="col-md-10">
       <h1>Enquire</h1>
       <p>Please enter your time of travel</p>
-    
+
       <%= simple_form_for [@island, @booking] do |f| %>
-        <%= f.input :check_in, as: :date, html5: true %>
+        <%= f.input :check_in, html5: true %>
         <%= f.input :check_out, as: :date, html5: true %>
         <%= f.input :guests %>
         <div class="submit-button"><%= f.submit %></div>
